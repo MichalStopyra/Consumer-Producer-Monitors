@@ -6,7 +6,6 @@ FullMonitor::FullMonitor() {
     evenValue = 0;
 }
 
-//---------------kopiowanie przed wyswietlaniem???????????????????????????????????????-------
 
 std::queue<int> FullMonitor::copy_queue(const std::queue<int> &Q) {
     std::queue<int> Q2 = Q;
@@ -106,13 +105,13 @@ void* FullMonitor::B1 ( void ) {
         std::cout<<"usunieto "<< deletedValue<<" od parz, l el w p: "<<evenQueue.size()<<std::endl;
         printBothFifo( evenQueue, oddQueue );
 
-        if(evenQueue.size() > oddQueue.size() )//??????????????????????
+        if(evenQueue.size() > oddQueue.size() )
             signal ( con_A2 );
 
         if( evenQueue.size() < 10 )
             signal( con_A1 );
 
-        if( evenQueue.size() + oddQueue.size() == 6)//?????????????????????????????????
+        if( evenQueue.size() + oddQueue.size() == 6)
             wait( con_B2 );
 
         leave();
@@ -141,7 +140,7 @@ void* FullMonitor::B2 ( void ) {
         if( evenQueue.size() > oddQueue.size() )
             signal( con_A2 );
 
-        if( evenQueue.size() + oddQueue.size() == 2 )//????????????????????
+        if( evenQueue.size() + oddQueue.size() == 2 )
             wait( con_B1 );
 
         leave();
